@@ -6,5 +6,7 @@ Personal Homebrew tap for patched casks.
 
 ```sh
 brew tap egigoka/casks-patched
-brew install --cask dockdoor-patched
+brew install --cask --force dockdoor-patched
 ```
+
+`--force` may be needed because Homebrew treats third-party cask taps as untrusted.
