@@ -23,6 +23,6 @@ class HtopPatched < Formula
 
   test do
     assert_match version.to_s, shell_output("#{bin}/htop --version")
-    assert_equal 0, pipe_output(bin/"htop", "q", 0)
+    pipe_output bin/"htop", "q", 0
   end
 end
