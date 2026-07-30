@@ -1,9 +1,9 @@
 class GpingPatched < Formula
   desc "Ping grapher with timeout stats and resilient ping workers"
   homepage "https://github.com/egigoka/gping"
-  url "https://github.com/egigoka/gping/archive/97f1c26aa0c4c07a264b4a0009cdcefec9ebe467.tar.gz"
-  version "1.20.4-patched.1785427499"
-  sha256 "34c702a33b3611ad79cfe8585df7557f5e4bbbe9dd0e015430dc3a4bd47ef5b0"
+  url "https://github.com/egigoka/gping/archive/2e3b0bc7b5960bebc06fe47ddd3489709034fb72.tar.gz"
+  version "1.20.4-patched.1785427645"
+  sha256 "e309f507f5e8947444e167926e4709e0ce61619db65e803ebba6da31b83b1f00"
   license "MIT"
 
   depends_on "pkgconf" => :build
