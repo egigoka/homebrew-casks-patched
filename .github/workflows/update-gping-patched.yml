@@ -1,0 +1,49 @@
+name: Update gping patched
+
+on:
+  schedule:
+    - cron: "47 3 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: update-gping-patched
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout tap
+        uses: actions/checkout@v7
+        with:
+          ref: main
+
+      - name: Checkout patched gping
+        run: git clone --depth=1 https://github.com/egigoka/gping.git gping-source
+
+      - name: Update formula
+        run: scripts/update-gping-formula.sh
+
+      - name: Validate formula
+        run: ruby -c Formula/gping-patched.rb
+
+      - name: Detect changes
+        id: changes
+        run: |
+          if git diff --quiet -- Formula/gping-patched.rb; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit formula
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Formula/gping-patched.rb
+          git commit -m "chore: update gping-patched"
+          git push origin HEAD:main
