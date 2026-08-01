@@ -1,6 +1,6 @@
 cask "dockdoor-patched" do
-  version "1.39.4-patched"
-  sha256 "be4861928487adfc0cbc560320a21439ed63baaffc2eb1b15c5b04448beb4ec7"
+  version "1.39.5-patched"
+  sha256 "cac494ea3edfd0bf39ab54176a9a8d9ea9e112308049c0e82818e5faae95c03c"
 
   url "https://github.com/egigoka/DockDoor/releases/download/#{version}/DockDoor-patched.dmg"
   name "DockDoor Patched"
