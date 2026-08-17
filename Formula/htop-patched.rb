@@ -1,9 +1,9 @@
 class HtopPatched < Formula
   desc "Process viewer with Apple Silicon CPU frequency and temperature support"
   homepage "https://github.com/egigoka/htop"
-  url "https://github.com/egigoka/htop/releases/download/3.5.2e2/htop-3.5.2e2.tar.gz"
-  version "3.5.2e2"
-  sha256 "965b650a6971b9c97fd3b7269aed0912a43a660c44c600067cb03f8ce277bd40"
+  url "https://github.com/egigoka/htop/releases/download/3.5.3e1/htop-3.5.3e1.tar.gz"
+  version "3.5.3e1"
+  sha256 "2b97b1fdea6f8554ebcf076b6e97262dcab589652780acff22e6c6c48cba3a36"
   license "GPL-2.0-or-later"
 
   depends_on "autoconf" => :build
