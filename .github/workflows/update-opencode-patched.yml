@@ -1,0 +1,49 @@
+name: Update opencode patched
+
+on:
+  schedule:
+    - cron: "17 4 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: update-opencode-patched
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout tap
+        uses: actions/checkout@v7
+        with:
+          ref: main
+
+      - name: Checkout patched opencode
+        run: git clone --depth=1 --branch dev https://github.com/egigoka/opencode.git opencode-source
+
+      - name: Update formula
+        run: scripts/update-opencode-formula.sh
+
+      - name: Validate formula
+        run: ruby -c Formula/opencode-patched.rb
+
+      - name: Detect changes
+        id: changes
+        run: |
+          if git diff --quiet -- Formula/opencode-patched.rb; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit formula
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Formula/opencode-patched.rb
+          git commit -m "chore: update opencode-patched"
+          git push origin HEAD:main

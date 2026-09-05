@@ -14,7 +14,7 @@ class OpencodePatched < Formula
   def install
     # Source archives do not include .git, which the build metadata otherwise requires.
     ENV["OPENCODE_CHANNEL"] = "dev"
-    ENV["OPENCODE_VERSION"] = version.to_s.split("-").first
+    ENV["OPENCODE_VERSION"] = version.to_s.sub(/-patched\.\d+\z/, "")
 
     system "bun", "install", "--frozen-lockfile"
 
@@ -36,6 +36,7 @@ class OpencodePatched < Formula
   end
 
   test do
-    assert_match version.to_s.split("-").first, shell_output("#{bin}/opencode --version")
+    expected_version = version.to_s.sub(/-patched\.\d+\z/, "")
+    assert_match expected_version, shell_output("#{bin}/opencode --version")
   end
 end
