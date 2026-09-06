@@ -1,42 +1,50 @@
 class OpencodePatched < Formula
   desc "AI coding agent for the terminal"
   homepage "https://github.com/egigoka/opencode"
-  url "https://github.com/egigoka/opencode/archive/3d5e06e1916c916dbd08a79e84d8512d96fe0529.tar.gz"
-  version "1.18.8-patched.1788617887"
-  sha256 "4c91da6f3894aebf8fe15421f56fb4d9c29bed80dcc069860be2dd2e3d33bf79"
+  version "0.0.0-daily-20260906075622-242e754"
   license "MIT"
 
-  depends_on "bun" => :build
   depends_on "ripgrep"
+
+  on_macos do
+    on_arm do
+      url "https://github.com/egigoka/opencode/releases/download/v0.0.0-daily-20260906075622-242e754/opencode-darwin-arm64.zip"
+      sha256 "5a0a79eb6f6712026b336329abd36c6c0d359a3714fa716958a43fc416c42b84"
+    end
+    on_intel do
+      url "https://github.com/egigoka/opencode/releases/download/v0.0.0-daily-20260906075622-242e754/opencode-darwin-x64.zip"
+      sha256 "f7d256d7a34e6ab1a10905a4199ca68a3fdd8a50d4737bd9c6d42d3a320358f3"
+    end
+  end
+
+  on_linux do
+    on_arm do
+      if File.exist?("/etc/alpine-release")
+        url "https://github.com/egigoka/opencode/releases/download/v0.0.0-daily-20260906075622-242e754/opencode-linux-arm64-musl.tar.gz"
+        sha256 "b61c4e7185eec0a06502c20849590a45cec1e05b95ead169c215cb4aa925c152"
+      else
+        url "https://github.com/egigoka/opencode/releases/download/v0.0.0-daily-20260906075622-242e754/opencode-linux-arm64.tar.gz"
+        sha256 "586b697f110f56ad7ba7528313b664c45338c15aafa8d876c2c53bac0b245c98"
+      end
+    end
+    on_intel do
+      if File.exist?("/etc/alpine-release")
+        url "https://github.com/egigoka/opencode/releases/download/v0.0.0-daily-20260906075622-242e754/opencode-linux-x64-musl.tar.gz"
+        sha256 "3994c26bb97df612ea0fc248d0da82aa9a8214db7e3678e7244691b06d90d9fe"
+      else
+        url "https://github.com/egigoka/opencode/releases/download/v0.0.0-daily-20260906075622-242e754/opencode-linux-x64.tar.gz"
+        sha256 "40e68079ff1b176319e446d12e50a060e152314dc0844e37b9f3a8c0a1b296f7"
+      end
+    end
+  end
 
   conflicts_with "opencode", because: "both install an `opencode` binary"
 
   def install
-    # Source archives do not include .git, which the build metadata otherwise requires.
-    ENV["OPENCODE_CHANNEL"] = "dev"
-    ENV["OPENCODE_VERSION"] = version.to_s.sub(/-patched\.\d+\z/, "")
-
-    system "bun", "install", "--frozen-lockfile"
-
-    if OS.mac?
-      # Bun's compiled macOS artifact needs an ad hoc signature before execution.
-      inreplace "packages/opencode/script/build.ts",
-        "console.log(`Running smoke test: ${binaryPath} --version`)",
-        [
-          "if (process.platform === \"darwin\") await $`codesign --force --sign - ${binaryPath}`",
-          "    console.log(`Running smoke test: ${binaryPath} --version`)",
-        ].join("\n")
-    end
-
-    system "bun", "run", "--cwd", "packages/opencode", "build", "--single", "--skip-embed-web-ui"
-
-    arch = Hardware::CPU.arm? ? "arm64" : "x64"
-    os = OS.mac? ? "darwin" : "linux"
-    bin.install "packages/opencode/dist/opencode-#{os}-#{arch}/bin/opencode"
+    bin.install "opencode"
   end
 
   test do
-    expected_version = version.to_s.sub(/-patched\.\d+\z/, "")
-    assert_match expected_version, shell_output("#{bin}/opencode --version")
+    assert_match version.to_s, shell_output("#{bin}/opencode --version")
   end
 end

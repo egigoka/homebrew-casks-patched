@@ -14,7 +14,8 @@ brew install --cask --force egigoka/casks-patched/dockdoor-patched
 `gping-patched` tracks the patched fork's latest `master`. Scheduled workflows
 sync that fork from upstream and update this formula daily.
 
-`opencode-patched` tracks the `dev` branch of `egigoka/opencode`. A scheduled
-workflow updates its pinned source commit and checksum daily.
+`opencode-patched` installs the prebuilt binaries from the latest
+`egigoka/opencode` daily release. A scheduled workflow updates its pinned
+release tag and checksums daily.
 
 `--force` may be needed because Homebrew treats third-party cask taps as untrusted.

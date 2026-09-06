@@ -2,7 +2,8 @@ name: Update opencode patched
 
 on:
   schedule:
-    - cron: "17 4 * * *"
+    # Daily release build takes hours after its 03:41 UTC trigger, so poll mid-morning.
+    - cron: "30 8 * * *"
   workflow_dispatch:
 
 concurrency:
@@ -21,10 +22,9 @@ jobs:
         with:
           ref: main
 
-      - name: Checkout patched opencode
-        run: git clone --depth=1 --branch dev https://github.com/egigoka/opencode.git opencode-source
-
       - name: Update formula
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: scripts/update-opencode-formula.sh
 
       - name: Validate formula
