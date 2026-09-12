@@ -1,39 +1,39 @@
 class OpencodePatched < Formula
   desc "AI coding agent for the terminal"
   homepage "https://github.com/egigoka/opencode"
-  version "0.0.0-daily-20260911081832-193de13"
+  version "0.0.0-daily-20260912080807-95daf90"
   license "MIT"
 
   depends_on "ripgrep"
 
   on_macos do
     on_arm do
-      url "https://github.com/egigoka/opencode/releases/download/v0.0.0-daily-20260911081832-193de13/opencode-darwin-arm64.zip"
-      sha256 "7bc85db9bda6112aab761b7c8d29ca85f4ad5a0feca50cd60eb24a75332705ee"
+      url "https://github.com/egigoka/opencode/releases/download/v0.0.0-daily-20260912080807-95daf90/opencode-darwin-arm64.zip"
+      sha256 "82e8f71e13a2d9971a0c4e9f98acce2750abc809d46d7778d7d9263f1fdfeda0"
     end
     on_intel do
-      url "https://github.com/egigoka/opencode/releases/download/v0.0.0-daily-20260911081832-193de13/opencode-darwin-x64.zip"
-      sha256 "d8756b0913e25c3086ccce8fdf62b143b1d697ae8bcc1eab9aee8f4a1afa4187"
+      url "https://github.com/egigoka/opencode/releases/download/v0.0.0-daily-20260912080807-95daf90/opencode-darwin-x64.zip"
+      sha256 "d995e25857c613959fc0cddaf5fe9f5ccb1c9e227d842136f28c99b53e04bba1"
     end
   end
 
   on_linux do
     on_arm do
       if File.exist?("/etc/alpine-release")
-        url "https://github.com/egigoka/opencode/releases/download/v0.0.0-daily-20260911081832-193de13/opencode-linux-arm64-musl.tar.gz"
-        sha256 "bd2ed26c7ef3a38f1fdc5713168d5e25c67abf3480c049c37004ae7887c10e13"
+        url "https://github.com/egigoka/opencode/releases/download/v0.0.0-daily-20260912080807-95daf90/opencode-linux-arm64-musl.tar.gz"
+        sha256 "ce6c6af314fcf3b6d1447a8ee16e9101296f673f1b0f75679e943ddb388ce255"
       else
-        url "https://github.com/egigoka/opencode/releases/download/v0.0.0-daily-20260911081832-193de13/opencode-linux-arm64.tar.gz"
-        sha256 "6c70a7145debda168e462119665bc5702f1ddd0ccd5b25a58e227f7c53495df7"
+        url "https://github.com/egigoka/opencode/releases/download/v0.0.0-daily-20260912080807-95daf90/opencode-linux-arm64.tar.gz"
+        sha256 "07666813ce0ad6ebd37cbf26363cc924a9f627b45c31f4bc010c4e2c316cf972"
       end
     end
     on_intel do
       if File.exist?("/etc/alpine-release")
-        url "https://github.com/egigoka/opencode/releases/download/v0.0.0-daily-20260911081832-193de13/opencode-linux-x64-musl.tar.gz"
-        sha256 "1e48f5c0b1c5fa79da25c039c69916502aaec60d591d7a45d2ee492d483af689"
+        url "https://github.com/egigoka/opencode/releases/download/v0.0.0-daily-20260912080807-95daf90/opencode-linux-x64-musl.tar.gz"
+        sha256 "7f3b27083f9940c95e1ecb6bf801cb97316d77f85942f60cce6c52de4aedae13"
       else
-        url "https://github.com/egigoka/opencode/releases/download/v0.0.0-daily-20260911081832-193de13/opencode-linux-x64.tar.gz"
-        sha256 "25f4e11b5b2958780712cf0f1500dea53a78fcaa3826598307fd3e1af65b614c"
+        url "https://github.com/egigoka/opencode/releases/download/v0.0.0-daily-20260912080807-95daf90/opencode-linux-x64.tar.gz"
+        sha256 "cfb074b07d06664df90ad40ff3cf1151c708cd8bed7744eb8671d5f197f7e2ba"
       end
     end
   end
