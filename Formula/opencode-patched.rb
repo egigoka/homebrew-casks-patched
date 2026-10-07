@@ -1,39 +1,39 @@
 class OpencodePatched < Formula
   desc "AI coding agent for the terminal"
   homepage "https://github.com/egigoka/opencode"
-  version "1.18.34"
+  version "1.18.35"
   license "MIT"
 
   depends_on "ripgrep"
 
   on_macos do
     on_arm do
-      url "https://github.com/egigoka/opencode/releases/download/v1.18.34/opencode-darwin-arm64.zip"
-      sha256 "e68833f5fc4eb660bc5a2a377323ae43e3174080a08864aecc923c1fbbfd8c4b"
+      url "https://github.com/egigoka/opencode/releases/download/v1.18.35/opencode-darwin-arm64.zip"
+      sha256 "7ad2e9336ef60a7526c3e1a930dce971aabe643b4ec37e93adf7184228818040"
     end
     on_intel do
-      url "https://github.com/egigoka/opencode/releases/download/v1.18.34/opencode-darwin-x64.zip"
-      sha256 "ea4b935f371524f173be2dd7fba7dbe0757a6459a8ba2b3e196b9f61677f0be0"
+      url "https://github.com/egigoka/opencode/releases/download/v1.18.35/opencode-darwin-x64.zip"
+      sha256 "beac8156a0126fde33935640fedde8d76a9778dcde0e79b93b6d6ce284fe22ff"
     end
   end
 
   on_linux do
     on_arm do
       if File.exist?("/etc/alpine-release")
-        url "https://github.com/egigoka/opencode/releases/download/v1.18.34/opencode-linux-arm64-musl.tar.gz"
-        sha256 "befd307d16cf1b2ba2fa88650408afd4dfa41566185cdd376345c91d88bfc9da"
+        url "https://github.com/egigoka/opencode/releases/download/v1.18.35/opencode-linux-arm64-musl.tar.gz"
+        sha256 "a5b2f7148084cfece54a3e462588a010c43ab988a5b08df169b8cc50e12bc615"
       else
-        url "https://github.com/egigoka/opencode/releases/download/v1.18.34/opencode-linux-arm64.tar.gz"
-        sha256 "cd8ba4b335ff6ecbd8abc9df4a40a9a4ce0a3bfb7aac6bcea47be82eed5f7dcf"
+        url "https://github.com/egigoka/opencode/releases/download/v1.18.35/opencode-linux-arm64.tar.gz"
+        sha256 "02a63e131715eab3b591a750117a0bf848c3cae9a3a0173a6ea31eef810aec9a"
       end
     end
     on_intel do
       if File.exist?("/etc/alpine-release")
-        url "https://github.com/egigoka/opencode/releases/download/v1.18.34/opencode-linux-x64-musl.tar.gz"
-        sha256 "f0d6dca81dede9f8576e1fa45e45632b0c1c949d2e3f79dc31c7f0c4c4493b69"
+        url "https://github.com/egigoka/opencode/releases/download/v1.18.35/opencode-linux-x64-musl.tar.gz"
+        sha256 "56c32c005fec9d7701f8c7f6bcc21bad9ae2d4f8905f30eba93c372046eadc23"
       else
-        url "https://github.com/egigoka/opencode/releases/download/v1.18.34/opencode-linux-x64.tar.gz"
-        sha256 "5dc4e2767ff322ce47d8e852118b28c624f9034b32247500307228e4bb65a8d1"
+        url "https://github.com/egigoka/opencode/releases/download/v1.18.35/opencode-linux-x64.tar.gz"
+        sha256 "df366c80efee7d50b85a478420e2ff0c7aec3c8c28b1dbe4e47181f2e583e0a6"
       end
     end
   end
