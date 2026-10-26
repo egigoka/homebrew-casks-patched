@@ -9,11 +9,11 @@ class OpencodePatched < Formula
   on_macos do
     on_arm do
       url "https://github.com/egigoka/opencode/releases/download/v2.1.4/opencode-darwin-arm64.zip"
-      sha256 "6d77b9773f8836ac7962863bb133e43441ddd3261cd215a5acbdc74719b8c5d6"
+      sha256 "a985dae58c5feb435a812df407b95243e9e4c6d76f564917d2d6110f42871d10"
     end
     on_intel do
       url "https://github.com/egigoka/opencode/releases/download/v2.1.4/opencode-darwin-x64.zip"
-      sha256 "cdb3b49067611ae7586cfe8fb10016cf7cc4ab08812d4f37bbc91816811cf139"
+      sha256 "a23f4a99e73cced92b0bb1bb93bbbf17016f0428b34fd708f859c8d129b35a7d"
     end
   end
 
@@ -21,19 +21,19 @@ class OpencodePatched < Formula
     on_arm do
       if File.exist?("/etc/alpine-release")
         url "https://github.com/egigoka/opencode/releases/download/v2.1.4/opencode-linux-arm64-musl.tar.gz"
-        sha256 "e4b7514efeeac31c6276bae9308ebdadee95c74117f8134e93e73143bab39fb6"
+        sha256 "1c3215f03ef877d65fe8670d234c150a6c16384d3b38c5a2f7812c3b2e807345"
       else
         url "https://github.com/egigoka/opencode/releases/download/v2.1.4/opencode-linux-arm64.tar.gz"
-        sha256 "e3c4fffe5839f1268e448615611552f86cea27543452603f1138733a075ee8da"
+        sha256 "e639d380a27c2c55d7514bab98872ddfd79faa0ebec293d37ee78fb7077dd041"
       end
     end
     on_intel do
       if File.exist?("/etc/alpine-release")
         url "https://github.com/egigoka/opencode/releases/download/v2.1.4/opencode-linux-x64-musl.tar.gz"
-        sha256 "8c3eaa49d2db97dfbe100978a1bb96eee0e6c4e5d104268dfcbbaf29a1f9d542"
+        sha256 "74beaf6e85be9c89c93f0bfa0ce04b2b0dfabd3f5dec610544e7e35e19be43c5"
       else
         url "https://github.com/egigoka/opencode/releases/download/v2.1.4/opencode-linux-x64.tar.gz"
-        sha256 "4f1c9a91704e9af95a9241df6fec867b9633f981992f82568440b211527fa1b9"
+        sha256 "3f70b46bcd54c8b6a58f3bb0b52ff4dd394328138d1bab65b5240f98793f8279"
       end
     end
   end
